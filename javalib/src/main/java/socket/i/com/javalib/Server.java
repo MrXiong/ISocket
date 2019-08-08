@@ -2,6 +2,7 @@ package socket.i.com.javalib;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -16,7 +17,9 @@ public class Server extends Thread {
     // 定义一个服务器，定义端口
     public Server(int port) {
         try {
-            server = new ServerSocket(port);
+            InetAddress inetAddress = InetAddress.getByName("192.168.31.48");
+            server = new ServerSocket(port, 50, inetAddress);
+            //server = new ServerSocket(port);
         } catch (IOException e) {
             e.printStackTrace();
         }
